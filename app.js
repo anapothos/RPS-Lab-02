@@ -22,8 +22,7 @@ playButton.addEventListener('click', () => {
     let compThrow = getRandomThrow();
     let result = checkResult(userThrow, compThrow);
     //update DOM fields
-    resultFieldUserThrow.textContent = userThrow;
-    resultFieldCompThrow.textContent = compThrow;
+    updateThrowFields(userThrow, compThrow);
     winnerField.textContent = displayGameResult(result);
     stats.textContent = `Wins: ${wins} Loses: ${loses}, Draws: ${draws}`;
 
@@ -31,12 +30,19 @@ playButton.addEventListener('click', () => {
     updateResultList(result);
 });
 
+const updateThrowFields = (userThrow, compThrow) => {
+    resultFieldUserThrow.textContent = userThrow;
+    resultFieldCompThrow.textContent = compThrow;
+};
+
 //generate LI for OL
 const updateResultList = result => {
     let newListItem = document.createElement('li');
     let textForNewListItem = document.createTextNode(result);
     newListItem.appendChild(textForNewListItem);
     resultList.append(newListItem);
+    colorResult(textForNewListItem);
+
 };
 
 const displayGameResult = result => {
@@ -51,3 +57,15 @@ const displayGameResult = result => {
         return 'The game was a draw.';
     }
 };
+
+// const colorResult = (textToColor) => {
+       
+//     if (textToColor.nodeValue === 'win') {
+//         textToColor.classList.add('greenWin');
+//     } else if (textToColor.nodeValue === 'lose') {
+//         textToColor.classList.add('redLose');
+//     } else if (textToColor.nodeValue === 'draw') {
+//         textToColor.classList.add('yellowDraw');
+//     }
+
+// };

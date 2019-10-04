@@ -90,3 +90,13 @@ input {
 input:checked + .game-img {
     border: 5px #79c99e solid;
 }
+.greenWin {
+    color: green;
+}
+
+.redLose {
+    color: red;
+}
+.yellowDraw {
+    color: yellow;
+}
